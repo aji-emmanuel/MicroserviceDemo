@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "GmVyijBLpLlZ5pg/2LHZHZObQeMsLzY4HJaNWHsftj5lOO8h6AmLXtp3vxI+GGmYuN3ZMX1gutfLqnegupujlg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\C#\\MicroServiceDemo\\BankService\\BankService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}

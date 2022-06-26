@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Bde0U3fs9qFVWQ4Ewx7cv1BNuvtERdHLdJ8lwyMl688+smj9npi/BfNdGhC1RzMxJtAnq3l0GR5Ur/KbZQa47Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\C#\\MicroServiceDemo\\APIGateway\\APIGateway.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}

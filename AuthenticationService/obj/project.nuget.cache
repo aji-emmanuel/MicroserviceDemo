@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XGtkcsTVssIWV3mmZ9930xAuAKpLUSN0QJZz7ApxQAhAdQFofNNl9RAhFt9om1JdIFODyTKMuxCROYEpYjF06A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\C#\\MicroServiceDemo\\AuthenticationService\\AuthenticationService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}
