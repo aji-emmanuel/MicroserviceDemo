@@ -1,15 +1,13 @@
+using AuthenticationService.DataAccess;
+using AuthenticationService.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AuthenticationService
 {
@@ -26,6 +24,34 @@ namespace AuthenticationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddDbContext<AuthContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            var builder = services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedPhoneNumber = true;
+            });
+            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), services);
+            builder.AddEntityFrameworkStores<AuthContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddHttpContextAccessor();
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(5));
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Auth Microservice",
+                    Version = "v1"
+                });
+            });
+
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +64,15 @@ namespace AuthenticationService
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auth Service");
+            });
+
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

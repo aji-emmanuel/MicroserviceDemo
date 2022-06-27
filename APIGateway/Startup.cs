@@ -1,15 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace APIGateway
 {
@@ -26,10 +21,12 @@ namespace APIGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddOcelot();
+            services.AddSwaggerForOcelot(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -37,6 +34,11 @@ namespace APIGateway
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwaggerForOcelotUI(opt =>
+            {
+                opt.PathToSwaggerGenerator = "/swagger/docs";
+            });
 
             app.UseRouting();
 
@@ -46,6 +48,7 @@ namespace APIGateway
             {
                 endpoints.MapControllers();
             });
+            await app.UseOcelot();
         }
     }
 }

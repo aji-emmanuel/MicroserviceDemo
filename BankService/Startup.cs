@@ -1,15 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using OperationService.DataAccess;
 
 namespace BankService
 {
@@ -26,6 +20,19 @@ namespace BankService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Bank Microservice",
+                    Version = "v1",
+                });
+            });
+
+            services.AddHttpClient("banks", config =>
+            {
+                config.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Configuration["SubscriptionKey"]);
+            });
+            services.AddSingleton<IBankRepository, BankRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +44,11 @@ namespace BankService
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bank Microservice");
+            });
 
             app.UseRouting();
 

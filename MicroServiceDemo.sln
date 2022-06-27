@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{5AA0A11D-9D51-4071-9171-ED707419EF43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{29E5BEB7-96CA-4E5E-B8E2-F3DFFD9C3462}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserMicroservice", "UserService\UserMicroservice.csproj", "{29E5BEB7-96CA-4E5E-B8E2-F3DFFD9C3462}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankService", "BankService\BankService.csproj", "{C4A44450-AE3E-4978-A63A-B86DAA1B9565}"
 EndProject
