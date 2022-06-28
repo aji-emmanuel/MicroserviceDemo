@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using UserMicroservice.DataAccess;
 
-namespace CustomerService.Controllers
+namespace UserMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,16 +16,16 @@ namespace CustomerService.Controllers
 
         [HttpGet]
         [Route("existing")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var result = _userRepository.GetExistingUsers();
             return StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        public IActionResult GetById(string id)
         {
-            var result = await _userRepository.GetUserById(id);
+            var result = _userRepository.GetUserById(id);
             return StatusCode(result.StatusCode, result);
         }
     }

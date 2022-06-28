@@ -17,7 +17,7 @@ namespace OperationService.DataAccess
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Response<IEnumerable<Bank>>> GetExistingBanks()
+        public async Task<Response<List<Bank>>> GetExistingBanks()
         {
             try
             {
@@ -26,8 +26,8 @@ namespace OperationService.DataAccess
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
-                    var banks = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Bank>>>(data);
-                    return new Response<IEnumerable<Bank>>()
+                    var banks = JsonConvert.DeserializeObject<ApiResponse<List<Bank>>>(data);
+                    return new Response<List<Bank>>()
                     {
                         Data = banks.Result,
                         Message = "List of existing banks.",
@@ -35,7 +35,7 @@ namespace OperationService.DataAccess
                         Succeeded = response.IsSuccessStatusCode
                     };
                 }
-                return new Response<IEnumerable<Bank>>()
+                return new Response<List<Bank>>()
                 {
                     Data = null,
                     Message = response.ReasonPhrase,
@@ -45,7 +45,7 @@ namespace OperationService.DataAccess
             }
             catch (Exception exc)
             {
-                return new Response<IEnumerable<Bank>>()
+                return new Response<List<Bank>>()
                 {
                     Data = null,
                     Message = exc.Message == "No such host is known." ? "Network error!" : exc.Message,

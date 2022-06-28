@@ -7,6 +7,6 @@ namespace UserMicroservice.DataAccess
     public interface IUserRepository
     {
         Response<IEnumerable<UserDto>> GetExistingUsers();
-        Task<Response<UserDto>> GetUserById(string id);
+        Response<UserDto> GetUserById(string id);
     }
 }

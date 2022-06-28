@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UserMicroservice.Models;
 
 namespace UserMicroservice.DataAccess
@@ -45,11 +44,11 @@ namespace UserMicroservice.DataAccess
             }
         }
 
-        public async Task<Response<UserDto>> GetUserById(string id)
+        public Response<UserDto> GetUserById(string id)
         {
             try
             {
-                var user = await _userManager.FindByIdAsync(id);
+                var user = _userManager.Users.FirstOrDefault(user => user.Id == id);
                 if (user != null)
                 {
                     var mappedUser = _mapper.Map<UserDto>(user);

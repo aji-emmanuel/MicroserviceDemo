@@ -19,7 +19,7 @@ namespace OperationService.Controllers
         [HttpGet]
         [Route("existing")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult> Get()
         {
             var result = await _bankRepository.GetExistingBanks();
             return StatusCode(result.StatusCode, result);

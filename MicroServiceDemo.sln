@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{350A66CB-5870-4630-B47D-1F384D87F238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{350A66CB-5870-4630-B47D-1F384D87F238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{5AA0A11D-9D51-4071-9171-ED707419EF43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{5AA0A11D-9D51-4071-9171-ED707419EF43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserMicroservice", "UserService\UserMicroservice.csproj", "{29E5BEB7-96CA-4E5E-B8E2-F3DFFD9C3462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserMicroservice", "UserService\UserMicroservice.csproj", "{29E5BEB7-96CA-4E5E-B8E2-F3DFFD9C3462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankService", "BankService\BankService.csproj", "{C4A44450-AE3E-4978-A63A-B86DAA1B9565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankService", "BankService\BankService.csproj", "{C4A44450-AE3E-4978-A63A-B86DAA1B9565}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F74662E8-1B63-46E7-BDDF-FF62E8356CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankMicroservice_Tests", "BankMicroservice_Tests\BankMicroservice_Tests.csproj", "{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserMicroservice_Tests", "UserMicroservice_Tests\UserMicroservice_Tests.csproj", "{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthMicroservice_Tests", "AuthMicroservice_Tests\AuthMicroservice_Tests.csproj", "{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,26 @@ Global
 		{C4A44450-AE3E-4978-A63A-B86DAA1B9565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A44450-AE3E-4978-A63A-B86DAA1B9565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A44450-AE3E-4978-A63A-B86DAA1B9565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7DEB9D56-6314-4BF7-94ED-38F0CBE61E90} = {F74662E8-1B63-46E7-BDDF-FF62E8356CD5}
+		{F0FD9A83-4939-4C9A-B356-F55CFF0D31F3} = {F74662E8-1B63-46E7-BDDF-FF62E8356CD5}
+		{6F94C686-3E7F-496E-BC02-9C1C9D5BC22E} = {F74662E8-1B63-46E7-BDDF-FF62E8356CD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E013FA69-314C-46A1-BEA9-E55BACE40B18}

@@ -69,7 +69,7 @@ namespace AuthenticationService.DataAccess
 
         public async Task<Response<string>> Login(LoginReqDto model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = _userManager.Users.FirstOrDefault(u => u.Email == model.Email);//FindByEmailAsync(model.Email);
 
             if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
             {
@@ -80,7 +80,7 @@ namespace AuthenticationService.DataAccess
                     Succeeded = false
                 };
             }
-            if (!await _userManager.IsPhoneNumberConfirmedAsync(user))
+            if (!user.PhoneNumberConfirmed)
             {
                 return new Response<string>()
                 {
@@ -91,6 +91,7 @@ namespace AuthenticationService.DataAccess
             }
             return new Response<string>()
             {
+                Data = user.Id,
                 Message = "Login successful!",
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true
@@ -150,7 +151,7 @@ namespace AuthenticationService.DataAccess
         {
             var bytes = Base32Encoding.ToBytes(_configuration["EncodingKey"]);
             var totp = new Totp(bytes, mode: OtpHashMode.Sha256, step: 300);
-            return totp.VerifyTotp(input, out long timeStepMatched, window: new VerificationWindow(previous: 1, future: 1));//null);
+            return totp.VerifyTotp(input, out long timeStepMatched, window: null);
         }
 
         private string GetErrors(IdentityResult result)

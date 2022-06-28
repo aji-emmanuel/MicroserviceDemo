@@ -6,6 +6,6 @@ namespace OperationService.DataAccess
 {
     public interface IBankRepository
     {
-        Task<Response<IEnumerable<Bank>>> GetExistingBanks();
+        Task<Response<List<Bank>>> GetExistingBanks();
     }
 }
